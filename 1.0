@@ -1,0 +1,52 @@
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class Main
+{
+    public static void main(String[] args)
+    {
+        try
+        {
+            // Надо создать объект для записи данных в файл "students.txt"
+            FileWriter writer = new FileWriter("students.txt");
+
+            Scanner love = new Scanner(System.in);
+
+            System.out.print("Введите количество студентов: ");
+            int numStudents = love.nextInt();
+            love.nextLine(); // Очищаем буфер после ввода числа
+
+            // Цикл для ввода данных о каждом студенте
+            for (int i = 0; i < numStudents; i++) {
+                System.out.println("Студент " + (i + 1));
+
+                // вводим необходимые параметры
+                String name = love.nextLine();
+                System.out.print("Как звать то?: ");
+
+                int age = love.nextInt();
+                System.out.print("А скок годиков?: ");
+
+                double ball = love.nextDouble();
+                System.out.print("Какой средний балл?: ");
+
+
+                // Записываем инфу о студенте в файл
+                writer.write("Звать: " + name + ", Годиков: " + age + ", Средний балл: " + ball + "\n");
+            }
+
+            // Закрываем файл после записи данных
+            writer.close();
+
+            System.out.println("Всё супер, я всё сохранил в файл 'students.txt'");
+
+        }
+        // обрабатываем ошибки
+        catch (IOException e)
+        {
+            System.out.println(" Я хз как но возникла какае та ошибка, пофиксить не смогу");
+            e.printStackTrace();
+        }
+    }
+}
