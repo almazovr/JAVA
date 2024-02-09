@@ -22,14 +22,14 @@ public class Main
                 System.out.println("Студент " + (i + 1));
 
                 // вводим необходимые параметры
-                String name = love.nextLine();
                 System.out.print("Как звать то?: ");
+                String name = love.nextLine();
 
-                int age = love.nextInt();
                 System.out.print("А скок годиков?: ");
+                int age = love.nextInt();
 
-                double ball = love.nextDouble();
                 System.out.print("Какой средний балл?: ");
+                double ball = love.nextDouble();
 
 
                 // Записываем инфу о студенте в файл
