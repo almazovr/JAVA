@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+class Geogr
+{
+    private static final double radius = 6371;
+
+    public static void main(String[] args)
+    {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Какие координаты первой точки?:");
+        System.out.print("Широта: ");
+        double wid1 = scanner.nextDouble();
+        System.out.print("Долгота: ");
+        double lon1 = scanner.nextDouble();
+
+        System.out.println("А второй?:");
+        System.out.print("Широта: ");
+        double wid2 = scanner.nextDouble();
+        System.out.print("Долгота: ");
+        double lon2 = scanner.nextDouble();
+
+        double distance = calculateDistance(wid1, lon1, wid2, lon2);
+        System.out.println("Тебе придётся ехать- " + distance + " км");
+    }
+
+
+    private static double calculateDistance(double wid1, double lon1, double wid2, double lon2)
+    {
+
+        double dwid = Math.toRadians(wid2 - wid1);
+        double dlon = Math.toRadians(lon2 - lon1);
+
+        double a = Math.pow(Math.sin(dwid / 2), 2) + Math.cos(wid1) * Math.cos(wid2) * Math.pow(Math.sin(dlon / 2), 2);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        double distance = radius * c;
+
+        return distance;
+    }
+}
