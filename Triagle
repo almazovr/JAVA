@@ -1,0 +1,58 @@
+import java.util.Scanner;
+
+class Triagle
+{
+    public static void main(String[] args)
+    {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Введите первую сторону треугольника:");
+        int a = scanner.nextInt();
+        System.out.println("Введите вторую сторону треугольника:");
+        int b = scanner.nextInt();
+        System.out.println("Введите третью сторону треугольника:");
+        int c = scanner.nextInt();
+
+        if (oneTriangle(a, b, c))
+        {
+            System.out.println("стороны" + a + ", " + b + " и " + c + " являются сторонами прямоугольного треугольника");
+        }
+        else if (twoTriangle(a, b, c))
+        {
+            System.out.println("стороны" + a + ", " + b + " и " + c + " являются сторонами равнобедренного треугольника");
+        }
+        else if (threeTriangle(a, b, c))
+        {
+            System.out.println("стороны" + a + ", " + b + " и " + c + " являются сторонами равностороннего треугольника");
+        }
+        else if (x3Triangle(a, b, c))
+        {
+            System.out.println("стороны" + a + ", " + b + " и " + c + " являются сторонами треугольника");
+        }
+        else
+        {
+            System.out.println("стороны" + a + ", " + b + " и " + c + " являются сторонами обычного треугольника");
+        }
+    }
+
+    private static boolean oneTriangle(int a, int b, int c) {
+        return (a * a + b * b == c * c) || (b * b + c * c == a * a) || (c * c + a * a == b * b);
+        // прямоугольный треугольник,теорема пифагора
+    }
+
+    private static boolean twoTriangle(int a, int b, int c) {
+        return a == b || b == c || c == a;
+        // равнобедренный треугольник
+    }
+
+    private static boolean threeTriangle(int a, int b, int c) {
+        return a == b && b == c;
+        // равносторонний треугольник
+    }
+
+    private static boolean x3Triangle(int a, int b, int c) {
+        return a + b <= c || b + c <= a || c + a <= b;
+        // обычный треугольник
+    }
+
+}
